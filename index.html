@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="el">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Νικόλ Φραδελάκη | Ιδιαίτερα Μαθήματα</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --paper: #f7f0e7;
+        --paper-strong: #efe2d1;
+        --paper-soft: #fdf9f3;
+        --ink: #2d241d;
+        --ink-soft: #62574d;
+        --plum: #5b4a74;
+        --plum-deep: #45395d;
+        --yellow: #f5c76a;
+        --pink: #f1a0a9;
+        --blue: #8cc0d9;
+        --green: #9cc79a;
+        --line: #dcc9aa;
+        --shadow: rgba(45, 36, 29, 0.12);
+        --card: rgba(255, 255, 255, 0.34);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: var(--header-height, 72px);
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Karla", sans-serif;
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: "Fraunces", serif;
+        color: var(--plum-deep);
+        margin: 0 0 0.6em;
+        line-height: 1.08;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(14px);
+        background: rgba(247, 240, 231, 0.76);
+        border-bottom: 1px solid rgba(93, 74, 116, 0.14);
+      }
+
+      .topbar-inner {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: var(--plum);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 0.96rem;
+        color: var(--ink-soft);
+      }
+
+      .nav a {
+        position: relative;
+      }
+
+      .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        background: var(--pink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      .nav a:hover::after,
+      .nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .hero {
+        min-height: calc(100svh - var(--header-height, 72px));
+        padding: 74px 0 44px;
+        display: flex;
+        align-items: center;
+        background: radial-gradient(ellipse at 78% 42%, rgba(140, 192, 217, 0.16), transparent 34%),
+          radial-gradient(ellipse at 10% 78%, rgba(241, 160, 169, 0.12), transparent 30%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+        gap: 44px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(93, 74, 116, 0.12);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        max-width: 12ch;
+        letter-spacing: -0.04em;
+      }
+
+      .hero .accent {
+        text-decoration: underline wavy var(--pink) 3px;
+        text-underline-offset: 8px;
+      }
+
+      .hero p {
+        font-size: 1.18rem;
+        max-width: 36rem;
+        color: var(--ink-soft);
+        margin-top: 18px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 24px;
+        border-radius: 999px;
+        border: 2px solid var(--ink);
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 24px rgba(45, 36, 29, 0.08);
+      }
+
+      .btn-primary {
+        background: var(--plum);
+        border-color: var(--plum);
+        color: var(--paper-soft);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
+
+      .photo-card {
+        position: relative;
+        width: min(100%, 456px);
+        background: rgba(255, 255, 255, 0.38);
+        border: 2px solid var(--ink);
+        border-radius: 28px;
+        padding: 18px;
+        box-shadow: 0 22px 36px var(--shadow);
+      }
+
+      .photo-card::before,
+      .photo-card::after {
+        content: "";
+        position: absolute;
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(45, 36, 29, 0.08);
+      }
+
+      .photo-card::before {
+        top: -16px;
+        left: -18px;
+      }
+
+      .photo-card::after {
+        right: -10px;
+        bottom: -12px;
+      }
+
+      .hero-image {
+        border-radius: 20px;
+        border: 2px solid var(--ink);
+        overflow: hidden;
+        background: #d8d0c5;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .sticker {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 1rem;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        padding: 8px 18px;
+        background: var(--paper-soft);
+        box-shadow: 0 10px 18px rgba(45, 36, 29, 0.08);
+      }
+
+      .sticker.one {
+        top: 18px;
+        right: 14px;
+        background: var(--yellow);
+        transform: rotate(8deg);
+      }
+
+      .sticker.two {
+        bottom: 18px;
+        left: -12px;
+        background: var(--blue);
+        transform: rotate(-8deg);
+      }
+
+      .section {
+        min-height: calc(100svh - var(--header-height, 72px));
+        padding: clamp(36px, 7vh, 72px) 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .section > .wrap {
+        width: 100%;
+      }
+
+      .section-heading {
+        margin-bottom: 24px;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+      }
+
+      .section-heading p {
+        max-width: 52rem;
+        color: var(--ink-soft);
+        font-size: 1.06rem;
+      }
+
+      .about {
+        background: rgba(239, 226, 209, 0.7);
+        border-top: 2px solid var(--line);
+        border-bottom: 2px solid var(--line);
+      }
+
+      #subjects {
+        background: rgba(255, 255, 255, 0.24);
+      }
+
+      #locations {
+        background: rgba(140, 192, 217, 0.12);
+        border-top: 1px solid rgba(93, 74, 116, 0.12);
+        border-bottom: 1px solid rgba(93, 74, 116, 0.12);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .about-visual {
+        display: flex;
+        justify-content: center;
+      }
+
+      .profile-card {
+        position: relative;
+        width: min(100%, 410px);
+        background: rgba(255, 255, 255, 0.4);
+        border: 2px solid var(--ink);
+        border-radius: 28px;
+        padding: 18px;
+        box-shadow: 0 18px 28px rgba(45, 36, 29, 0.08);
+      }
+
+      .profile-card::before {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        top: -16px;
+        left: -12px;
+        background: rgba(241, 160, 169, 0.25);
+      }
+
+      .profile-image {
+        height: clamp(280px, 52vh, 420px);
+        overflow: hidden;
+        border-radius: 22px;
+        border: 2px solid var(--ink);
+        background: #d9c9b8;
+      }
+
+      .profile-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .about-copy {
+        font-size: 1.08rem;
+        color: var(--ink-soft);
+      }
+
+      .mini-note {
+        background: rgba(255, 255, 255, 0.42);
+        border: 2px solid var(--ink);
+        border-radius: 22px;
+        padding: 24px 22px;
+        position: relative;
+      }
+
+      .mini-note::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 24px;
+        width: 54px;
+        height: 18px;
+        background: var(--pink);
+        border: 2px solid var(--ink);
+        border-bottom: none;
+        border-radius: 10px 10px 0 0;
+      }
+
+      .mini-note strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--plum-deep);
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .subjects-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .subject-card {
+        position: relative;
+        isolation: isolate;
+        min-height: 270px;
+        overflow: hidden;
+        background: var(--paper-soft);
+        border: 1px solid rgba(69, 57, 93, 0.16);
+        border-radius: 24px;
+        padding: 24px 20px 22px;
+        box-shadow: 0 14px 30px rgba(45, 36, 29, 0.07);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .subject-card:hover {
+        transform: translateY(-6px) rotate(-0.5deg);
+        box-shadow: 0 20px 36px rgba(45, 36, 29, 0.12);
+      }
+
+      .subject-card::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -42px;
+        right: -32px;
+        width: 126px;
+        height: 126px;
+        border-radius: 50%;
+        background: var(--subject-color);
+        opacity: 0.22;
+      }
+
+      .subject-card::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 5px;
+        background: var(--subject-color);
+      }
+
+      .subject-card:nth-child(1) { --subject-color: var(--yellow); }
+      .subject-card:nth-child(2) { --subject-color: var(--pink); }
+      .subject-card:nth-child(3) { --subject-color: var(--blue); }
+      .subject-card:nth-child(4) { --subject-color: var(--green); }
+
+      .subject-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+
+      .subject-icon {
+        width: 54px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--subject-color) 42%, white);
+        font-size: 1.75rem;
+        transform: rotate(-5deg);
+      }
+
+      .subject-label {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(69, 57, 93, 0.06);
+        color: var(--plum);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        line-height: 1.3;
+        text-align: right;
+        text-transform: uppercase;
+      }
+
+      .subject-card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 10px;
+      }
+
+      .subject-card p {
+        color: var(--ink-soft);
+        font-size: 0.98rem;
+      }
+
+      .subjects-heading {
+        margin-bottom: 30px;
+      }
+
+      .subjects-heading .section-kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--plum);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .subjects-heading p {
+        max-width: 42rem;
+        margin-top: -8px;
+        color: var(--ink-soft);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .subject-card {
+          transition: none;
+        }
+
+        .subject-card:hover {
+          transform: none;
+        }
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .locations-heading {
+        margin-bottom: 28px;
+      }
+
+      .locations-heading .section-kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--plum);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .locations-heading p {
+        max-width: 42rem;
+        margin-top: -8px;
+        color: var(--ink-soft);
+      }
+
+      .location-card {
+        position: relative;
+        isolation: isolate;
+        min-height: 300px;
+        overflow: hidden;
+        padding: 28px;
+        border: 1px solid rgba(69, 57, 93, 0.16);
+        border-radius: 26px;
+        background: var(--paper-soft);
+        box-shadow: 0 14px 30px rgba(45, 36, 29, 0.07);
+        transition: transform 0.22s ease, box-shadow 0.22s ease;
+      }
+
+      .location-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 36px rgba(45, 36, 29, 0.12);
+      }
+
+      .location-card::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: -54px;
+        right: -42px;
+        width: 170px;
+        height: 170px;
+        border-radius: 50%;
+        background: var(--location-color);
+        opacity: 0.24;
+      }
+
+      .location-card::after {
+        content: "";
+        position: absolute;
+        inset: 0 auto 0 0;
+        width: 5px;
+        background: var(--location-color);
+      }
+
+      .location-card:first-child { --location-color: var(--blue); }
+      .location-card:last-child { --location-color: var(--pink); }
+
+      .location-card-top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+
+      .location-icon {
+        width: 58px;
+        height: 58px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background: color-mix(in srgb, var(--location-color) 44%, white);
+        font-size: 1.8rem;
+        transform: rotate(-5deg);
+      }
+
+      .location-eyebrow {
+        color: var(--plum);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .location-card h3 {
+        margin-bottom: 8px;
+        font-size: 1.55rem;
+      }
+
+      .location-card > p {
+        max-width: 34rem;
+        color: var(--ink-soft);
+      }
+
+      .pill-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill-list li {
+        display: inline-flex;
+        align-items: center;
+        padding: 9px 14px;
+        border: 1px solid rgba(69, 57, 93, 0.14);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        font-weight: 700;
+        transition: transform 0.18s ease, background 0.18s ease;
+      }
+
+      .pill-list li:hover {
+        transform: translateY(-2px);
+        background: color-mix(in srgb, var(--location-color, var(--yellow)) 28%, white);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .location-card,
+        .pill-list li {
+          transition: none;
+        }
+
+        .location-card:hover,
+        .pill-list li:hover {
+          transform: none;
+        }
+      }
+
+      .contact {
+        background: radial-gradient(ellipse at 8% 18%, rgba(241, 160, 169, 0.18), transparent 30%),
+          rgba(239, 226, 209, 0.8);
+        border-top: 2px solid var(--line);
+      }
+
+      .contact-wrap {
+        display: grid;
+        grid-template-columns: 0.82fr 1.18fr;
+        gap: clamp(28px, 5vw, 64px);
+        align-items: center;
+      }
+
+      .contact-intro .section-kicker {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--plum);
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .contact-intro h2 {
+        font-size: clamp(2.2rem, 4vw, 3.3rem);
+      }
+
+      .contact-copy {
+        color: var(--ink-soft);
+        font-size: 1.04rem;
+        max-width: 32rem;
+      }
+
+      .contact-email {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-top: 28px;
+        padding: 16px;
+        border: 1px solid rgba(69, 57, 93, 0.14);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.58);
+      }
+
+      .contact-email-icon {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: rgba(140, 192, 217, 0.3);
+        font-size: 1.4rem;
+      }
+
+      .contact-email strong,
+      .contact-email a {
+        display: block;
+      }
+
+      .contact-email strong {
+        color: var(--plum-deep);
+        font-size: 0.9rem;
+      }
+
+      .contact-email a {
+        color: var(--plum);
+        font-weight: 700;
+        overflow-wrap: anywhere;
+      }
+
+      .contact-form {
+        gap: 20px;
+        padding: clamp(22px, 4vw, 36px);
+        border: 1px solid rgba(69, 57, 93, 0.14);
+        border-radius: 28px;
+        background: var(--paper-soft);
+        box-shadow: 0 18px 42px rgba(45, 36, 29, 0.1);
+      }
+
+      .form-heading {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(69, 57, 93, 0.12);
+      }
+
+      .form-heading-icon {
+        width: 48px;
+        height: 48px;
+        flex: 0 0 48px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        background: rgba(241, 160, 169, 0.28);
+        font-size: 1.4rem;
+      }
+
+      .form-heading strong {
+        display: block;
+        color: var(--plum-deep);
+        font-family: "Fraunces", serif;
+        font-size: 1.25rem;
+      }
+
+      .form-heading p {
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+      }
+
+      .form-fields {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      form {
+        display: grid;
+        gap: 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field-wide {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        font-weight: 700;
+        color: var(--ink);
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        min-width: 0;
+        background: #fff;
+        border: 1px solid rgba(69, 57, 93, 0.22);
+        border-radius: 14px;
+        padding: 13px 14px;
+        font: inherit;
+        color: var(--ink);
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #8a7f87;
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus,
+      .btn:focus-visible {
+        outline: 3px solid rgba(140, 192, 217, 0.7);
+        outline-offset: 2px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        cursor: pointer;
+        background: var(--plum);
+        border: 2px solid var(--plum);
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 14px 20px;
+        border-radius: 16px;
+      }
+
+      .submit-arrow {
+        font-size: 1.2rem;
+        transition: transform 0.18s ease;
+      }
+
+      .submit-btn:hover .submit-arrow {
+        transform: translateX(4px);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+
+      .form-msg {
+        display: none;
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-weight: 700;
+      }
+
+      .form-msg.ok {
+        display: block;
+        background: rgba(156, 199, 154, 0.45);
+        border: 2px solid rgba(45, 36, 29, 0.2);
+      }
+
+      .form-msg.err {
+        display: block;
+        background: rgba(241, 160, 169, 0.4);
+        border: 2px solid rgba(45, 36, 29, 0.2);
+      }
+
+      footer {
+        background: var(--paper-soft);
+        color: var(--ink-soft);
+        text-align: center;
+        padding: 30px 12px 40px;
+      }
+
+      .back-to-top {
+        position: fixed;
+        z-index: 30;
+        right: clamp(16px, 3vw, 32px);
+        bottom: clamp(16px, 3vw, 30px);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border: 2px solid var(--plum);
+        border-radius: 999px;
+        background: var(--yellow);
+        color: var(--plum-deep);
+        box-shadow: 0 8px 22px rgba(45, 36, 29, 0.16);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover,
+      .back-to-top:focus-visible {
+        background: var(--pink);
+      }
+
+      .back-to-top:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 3px;
+      }
+
+      .back-to-top-arrow {
+        font-size: 1.15rem;
+        line-height: 1;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .back-to-top {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .about-grid,
+        .contact-wrap,
+        .detail-grid,
+        .subjects-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .hero-grid,
+        .about-grid,
+        .contact-wrap,
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .subjects-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav {
+          flex-wrap: wrap;
+          gap: 10px 16px;
+        }
+
+        .cta-row {
+          flex-direction: column-reverse;
+        }
+
+        .subjects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .form-fields {
+          grid-template-columns: 1fr;
+        }
+
+        .field-wide {
+          grid-column: auto;
+        }
+
+        .contact-form {
+          padding: 20px;
+          border-radius: 22px;
+        }
+
+        .hero {
+          padding: 42px 0;
+          min-height: calc(100svh - var(--header-height, 112px));
+        }
+
+        .section {
+          min-height: calc(100svh - var(--header-height, 112px));
+          padding: 44px 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">Νικόλ Φραδελάκη</div>
+        <nav class="nav" aria-label="Κύρια πλοήγηση">
+          <a href="#about">Λίγα λόγια</a>
+          <a href="#subjects">Μαθήματα</a>
+          <a href="#locations">Πού</a>
+          <a href="#contact">Επικοινωνία</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">Ιδιαίτερα μαθήματα φιλολογικών</div>
+            <h1>Μαθητική <span class="accent">αγάπη</span> για κάθε παιδί</h1>
+            <p>
+              Πτυχιούχος Φιλολογίας, με υπομονή, ξεκάθαρη μέθοδο και προσαρμοσμένο
+              πρόγραμμα για Δημοτικό, Γυμνάσιο και Α' Λυκείου — online ή στο σπίτι σου.
+            </p>
+            <div class="cta-row">
+              <a href="#contact" class="btn btn-primary">Στείλε μήνυμα</a>
+              <a href="#subjects" class="btn btn-secondary">Δες τα μαθήματα</a>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-label="Φωτογραφία μαθήματος με παιδικό ύφος">
+            <div class="photo-card">
+              <div class="sticker one">Reading</div>
+              <div class="sticker two">Mew</div>
+              <div class="hero-image">
+                <img
+                  src="assets/7087.jpg"
+                  alt="Γάτος και παιδικό περιβάλλον"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="wrap about-grid">
+          <div>
+            <div class="section-heading">
+              <h2>Λίγα λόγια</h2>
+            </div>
+            <div class="about-copy">
+              <p>
+                Προσφέρω ιδιαίτερα μαθήματα φιλολογικών με έμφαση στην κατανόηση, όχι
+                απλώς στην αποστήθιση. Κάθε παιδί έχει διαφορετικό ρυθμό και διαφορετικές
+                ανάγκες, γι' αυτό προσαρμόζω το πρόγραμμα με προσοχή, υπομονή και θετική
+                ενθάρρυνση — είτε για ενίσχυση, είτε για καλύτερη προετοιμασία σε διαγωνίσματα.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-visual">
+            <div class="profile-card">
+              <div class="profile-image">
+                <img src="assets/7117 (1).jpg" alt="Νικόλ Φραδελάκη" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="subjects">
+        <div class="wrap">
+          <div class="section-heading subjects-heading">
+            <span class="section-kicker">Μαθήματα για κάθε στάδιο</span>
+            <h2>Τι διδάσκω</h2>
+            <p>Σταθερή υποστήριξη και μικρά βήματα προόδου, προσαρμοσμένα στην ηλικία και τις ανάγκες κάθε παιδιού.</p>
+          </div>
+
+          <div class="subjects-grid">
+            <article class="subject-card">
+              <div class="subject-card-top">
+                <span class="subject-icon" aria-hidden="true">📚</span>
+                <span class="subject-label">01 · Βάσεις</span>
+              </div>
+              <h3>Δημοτικό</h3>
+              <p>Γλώσσα, κατανόηση κειμένου και ενίσχυση με δημιουργικό, παιδαγωγικό τρόπο.</p>
+            </article>
+
+            <article class="subject-card">
+              <div class="subject-card-top">
+                <span class="subject-icon" aria-hidden="true">🏛️</span>
+                <span class="subject-label">02 · Εμβάθυνση</span>
+              </div>
+              <h3>Γυμνάσιο</h3>
+              <p>Αρχαία, Νεοελληνική Γλώσσα &amp; Λογοτεχνία, Ιστορία και οργανωμένη επανάληψη.</p>
+            </article>
+
+            <article class="subject-card">
+              <div class="subject-card-top">
+                <span class="subject-icon" aria-hidden="true">✍️</span>
+                <span class="subject-label">03 · Λύκειο</span>
+              </div>
+              <h3>Α' Λυκείου</h3>
+              <p>Φιλολογικά μαθήματα, διαγωνίσματα, συντακτικό και λογοτεχνική ανάλυση.</p>
+            </article>
+
+            <article class="subject-card">
+              <div class="subject-card-top">
+                <span class="subject-icon" aria-hidden="true">🌱</span>
+                <span class="subject-label">04 · Ευέλικτα</span>
+              </div>
+              <h3>Ευέλικτο πρόγραμμα</h3>
+              <p>Ραντεβού με βάση το δικό σου πρόγραμμα και το επίπεδο του παιδιού.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="locations">
+        <div class="wrap">
+          <div class="section-heading locations-heading">
+            <span class="section-kicker">Εύκολα και ευέλικτα</span>
+            <h2>Πού κάνουμε μάθημα;</h2>
+            <p>Διαλέγουμε τον τρόπο που ταιριάζει καλύτερα στο παιδί και στο καθημερινό σας πρόγραμμα.</p>
+          </div>
+
+          <div class="detail-grid">
+            <article class="location-card">
+              <div class="location-card-top">
+                <span class="location-icon" aria-hidden="true">🏡</span>
+                <span class="location-eyebrow">Διαλέγεις εσύ</span>
+              </div>
+              <h3>Πού &amp; πώς</h3>
+              <p>Μαθήματα με άνεση, στον χώρο σας ή από όπου κι αν βρίσκεστε.</p>
+              <ul class="pill-list">
+                <li>🏠 Στο σπίτι σου</li>
+                <li>💻 Online</li>
+              </ul>
+            </article>
+
+            <article class="location-card">
+              <div class="location-card-top">
+                <span class="location-icon" aria-hidden="true">📍</span>
+                <span class="location-eyebrow">Κοντά στη γειτονιά σου</span>
+              </div>
+              <h3>Περιοχές</h3>
+              <p>Για δια ζώσης μαθήματα, εξυπηρετώ τις παρακάτω περιοχές:</p>
+              <ul class="pill-list">
+                <li>Καισαριανή</li>
+                <li>Ζωγράφου</li>
+                <li>Παγκράτι</li>
+                <li>Κέντρο</li>
+                <li>Μπλε γραμμή</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="wrap contact-wrap">
+          <div class="contact-intro">
+            <span class="section-kicker">Είμαι εδώ για να βοηθήσω</span>
+            <div class="section-heading">
+              <h2>Ας μιλήσουμε!</h2>
+            </div>
+            <p class="contact-copy">
+              Πες μου λίγα λόγια για τον μαθητή ή τη μαθήτρια και θα επικοινωνήσω σύντομα.
+              Το πρόγραμμα και η τιμή προσαρμόζονται στις ανάγκες του παιδιού.
+            </p>
+            <div class="contact-email">
+              <span class="contact-email-icon" aria-hidden="true">📞</span>
+              <div>
+                <strong>Προτιμάς να με καλέσεις;</strong>
+                <a href="tel:+306983704012">698 370 4012</a>
+              </div>
+            </div>
+          </div>
+
+          <form
+            id="contactForm"
+            class="contact-form"
+            action="https://formspree.io/f/mqabnagv"
+            method="POST"
+          >
+            <div class="form-heading">
+              <span class="form-heading-icon" aria-hidden="true">💌</span>
+              <div>
+                <strong>Στείλε μου μήνυμα</strong>
+                <p>Θα σου απαντήσω το συντομότερο.</p>
+              </div>
+            </div>
+
+            <input type="hidden" name="_subject" value="Νέο μήνυμα από το portfolio της Νικόλ" />
+
+            <div class="form-fields">
+              <div class="field">
+                <label for="name">Το όνομά σου</label>
+                <input type="text" id="name" name="name" autocomplete="name" placeholder="π.χ. Μαρία" required />
+              </div>
+
+              <div class="field">
+                <label for="contactInfo">Email ή τηλέφωνο</label>
+                <input type="text" id="contactInfo" name="contact" autocomplete="on" placeholder="Πώς να επικοινωνήσω μαζί σου;" required />
+              </div>
+
+              <div class="field field-wide">
+                <label for="grade">Τάξη μαθητή</label>
+                <select id="grade" name="grade" required>
+                  <option value="" selected disabled>Επίλεξε τάξη</option>
+                  <option>Δημοτικό</option>
+                  <option>Γυμνάσιο</option>
+                  <option>Α' Λυκείου</option>
+                </select>
+              </div>
+
+              <div class="field field-wide">
+                <label for="message">Πώς μπορώ να βοηθήσω;</label>
+                <textarea id="message" name="message" placeholder="Γράψε μου λίγα λόγια για τις ανάγκες του παιδιού…" required></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn submit-btn">
+              <span>Αποστολή μηνύματος</span>
+              <span class="submit-arrow" aria-hidden="true">→</span>
+            </button>
+            <div class="form-msg" id="formMsg" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 Νικόλ Φραδελάκη — Ιδιαίτερα Φιλολογικών Μαθημάτων</footer>
+
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Επιστροφή στην κορυφή">
+      <span class="back-to-top-arrow" aria-hidden="true">↑</span>
+      <span>Πάνω</span>
+    </button>
+
+    <script>
+      const topbar = document.querySelector(".topbar");
+      const updateHeaderHeight = () => {
+        document.documentElement.style.setProperty("--header-height", `${topbar.offsetHeight}px`);
+      };
+
+      updateHeaderHeight();
+      new ResizeObserver(updateHeaderHeight).observe(topbar);
+
+      const backToTop = document.getElementById("backToTop");
+      const updateBackToTopVisibility = () => {
+        backToTop.classList.toggle("visible", window.scrollY > 320);
+      };
+
+      window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+      updateBackToTopVisibility();
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+        });
+      });
+
+      const form = document.getElementById("contactForm");
+      const msg = document.getElementById("formMsg");
+      const btn = form.querySelector(".submit-btn");
+      const btnLabel = btn.querySelector("span:first-child");
+      const FORMSPREE_ENDPOINT = form.action;
+
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        btn.disabled = true;
+        btnLabel.textContent = "Αποστολή...";
+        msg.className = "form-msg";
+
+        try {
+          const formData = new FormData(form);
+          const contactValue = String(formData.get("contact") || "").trim();
+          if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactValue)) {
+            formData.set("_replyto", contactValue);
+          }
+
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: formData,
+          });
+
+          if (!res.ok) throw new Error("bad response");
+
+          msg.textContent = "Ευχαριστώ! Το μήνυμα στάλθηκε — θα επικοινωνήσω σύντομα.";
+          msg.className = "form-msg ok";
+          form.reset();
+        } catch (err) {
+          msg.textContent = "Δεν ήταν δυνατή η αποστολή. Δοκίμασε ξανά ή κάλεσε στο 698 370 4012.";
+          msg.className = "form-msg err";
+        } finally {
+          btn.disabled = false;
+          btnLabel.textContent = "Αποστολή μηνύματος";
+        }
+      });
+    </script>
+  </body>
+</html>
