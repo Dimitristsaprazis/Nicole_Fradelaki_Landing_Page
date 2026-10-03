@@ -7,22 +7,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Karla:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
       :root {
-        --paper: #f7f0e7;
-        --paper-strong: #efe2d1;
-        --paper-soft: #fdf9f3;
-        --ink: #2d241d;
-        --ink-soft: #62574d;
-        --plum: #5b4a74;
-        --plum-deep: #45395d;
-        --yellow: #f5c76a;
-        --pink: #f1a0a9;
-        --blue: #8cc0d9;
-        --green: #9cc79a;
-        --line: #dcc9aa;
-        --shadow: rgba(45, 36, 29, 0.12);
-        --card: rgba(255, 255, 255, 0.34);
+        --paper: #eaf5f0;
+        --paper-strong: #d5eae1;
+        --paper-soft: #f7fbf8;
+        --ink: #183b37;
+        --ink-soft: #526b66;
+        --plum: #147c72;
+        --plum-deep: #154e49;
+        --yellow: #e8b64c;
+        --pink: #e77966;
+        --blue: #62aec3;
+        --green: #7faf8d;
+        --line: #b8d7ce;
+        --shadow: rgba(24, 59, 55, 0.12);
+        --card: rgba(247, 251, 248, 0.72);
       }
 
       * {
@@ -36,7 +38,10 @@
 
       body {
         margin: 0;
-        background: var(--paper);
+        background:
+          radial-gradient(ellipse at 12% 10%, rgba(231, 121, 102, 0.08), transparent 34%),
+          radial-gradient(ellipse at 90% 24%, rgba(98, 174, 195, 0.12), transparent 32%),
+          var(--paper);
         color: var(--ink);
         font-family: "Karla", sans-serif;
         line-height: 1.6;
@@ -74,8 +79,8 @@
         top: 0;
         z-index: 20;
         backdrop-filter: blur(14px);
-        background: rgba(247, 240, 231, 0.76);
-        border-bottom: 1px solid rgba(93, 74, 116, 0.14);
+        background: rgba(234, 245, 240, 0.86);
+        border-bottom: 1px solid rgba(20, 124, 114, 0.16);
       }
 
       .topbar-inner {
@@ -101,6 +106,22 @@
         gap: 20px;
         font-size: 0.96rem;
         color: var(--ink-soft);
+      }
+
+      .drawer-heading {
+        display: none;
+      }
+
+      .nav-links {
+        display: contents;
+      }
+
+      .menu-backdrop {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: none;
       }
 
       .nav a {
@@ -130,8 +151,8 @@
         padding: 74px 0 44px;
         display: flex;
         align-items: center;
-        background: radial-gradient(ellipse at 78% 42%, rgba(140, 192, 217, 0.16), transparent 34%),
-          radial-gradient(ellipse at 10% 78%, rgba(241, 160, 169, 0.12), transparent 30%);
+        background: radial-gradient(ellipse at 82% 38%, rgba(98, 174, 195, 0.2), transparent 34%),
+          linear-gradient(120deg, var(--plum-deep) 0%, var(--plum-deep) 52%, var(--plum) 100%);
       }
 
       .hero-grid {
@@ -147,8 +168,8 @@
         gap: 8px;
         padding: 8px 14px;
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(93, 74, 116, 0.12);
+        background: rgba(247, 251, 248, 0.76);
+        border: 1px solid rgba(20, 124, 114, 0.16);
         font-size: 0.8rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -156,21 +177,23 @@
         margin-bottom: 18px;
       }
 
+      .hero .eyebrow {
+        border-color: rgba(247, 251, 248, 0.2);
+        background: rgba(247, 251, 248, 0.08);
+        color: var(--yellow);
+      }
+
       .hero h1 {
         font-size: clamp(2.8rem, 6vw, 5rem);
         max-width: 12ch;
         letter-spacing: -0.04em;
-      }
-
-      .hero .accent {
-        text-decoration: underline wavy var(--pink) 3px;
-        text-underline-offset: 8px;
+        color: var(--paper-soft);
       }
 
       .hero p {
         font-size: 1.18rem;
         max-width: 36rem;
-        color: var(--ink-soft);
+        color: rgba(247, 251, 248, 0.82);
         margin-top: 18px;
       }
 
@@ -195,7 +218,7 @@
       .btn:hover,
       .btn:focus-visible {
         transform: translateY(-1px);
-        box-shadow: 0 10px 24px rgba(45, 36, 29, 0.08);
+        box-shadow: 0 10px 24px rgba(24, 59, 55, 0.08);
       }
 
       .btn-primary {
@@ -204,9 +227,21 @@
         color: var(--paper-soft);
       }
 
+      .hero .btn-primary {
+        border-color: var(--yellow);
+        background: var(--yellow);
+        color: var(--plum-deep);
+      }
+
       .btn-secondary {
         background: transparent;
         color: var(--ink);
+      }
+
+      .hero .btn-secondary {
+        border-color: rgba(247, 251, 248, 0.5);
+        background: rgba(247, 251, 248, 0.06);
+        color: var(--paper-soft);
       }
 
       .hero-visual {
@@ -218,8 +253,8 @@
       .photo-card {
         position: relative;
         width: min(100%, 456px);
-        background: rgba(255, 255, 255, 0.38);
-        border: 2px solid var(--ink);
+        background: rgba(247, 251, 248, 0.86);
+        border: 2px solid rgba(247, 251, 248, 0.72);
         border-radius: 28px;
         padding: 18px;
         box-shadow: 0 22px 36px var(--shadow);
@@ -232,8 +267,8 @@
         width: 86px;
         height: 86px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.12);
-        border: 2px solid rgba(45, 36, 29, 0.08);
+        background: rgba(247, 251, 248, 0.22);
+        border: 2px solid rgba(24, 59, 55, 0.08);
       }
 
       .photo-card::before {
@@ -250,7 +285,7 @@
         border-radius: 20px;
         border: 2px solid var(--ink);
         overflow: hidden;
-        background: #d8d0c5;
+        background: #aec8bf;
       }
 
       .hero-image img {
@@ -272,7 +307,7 @@
         border-radius: 999px;
         padding: 8px 18px;
         background: var(--paper-soft);
-        box-shadow: 0 10px 18px rgba(45, 36, 29, 0.08);
+        box-shadow: 0 10px 18px rgba(24, 59, 55, 0.08);
       }
 
       .sticker.one {
@@ -315,19 +350,19 @@
       }
 
       .about {
-        background: rgba(239, 226, 209, 0.7);
+        background: rgba(213, 234, 225, 0.78);
         border-top: 2px solid var(--line);
         border-bottom: 2px solid var(--line);
       }
 
       #subjects {
-        background: rgba(255, 255, 255, 0.24);
+        background: rgba(247, 251, 248, 0.6);
       }
 
       #locations {
-        background: rgba(140, 192, 217, 0.12);
-        border-top: 1px solid rgba(93, 74, 116, 0.12);
-        border-bottom: 1px solid rgba(93, 74, 116, 0.12);
+        background: rgba(98, 174, 195, 0.1);
+        border-top: 1px solid rgba(20, 124, 114, 0.14);
+        border-bottom: 1px solid rgba(20, 124, 114, 0.14);
       }
 
       .about-grid {
@@ -345,11 +380,11 @@
       .profile-card {
         position: relative;
         width: min(100%, 410px);
-        background: rgba(255, 255, 255, 0.4);
+        background: rgba(247, 251, 248, 0.72);
         border: 2px solid var(--ink);
         border-radius: 28px;
         padding: 18px;
-        box-shadow: 0 18px 28px rgba(45, 36, 29, 0.08);
+        box-shadow: 0 18px 28px rgba(24, 59, 55, 0.08);
       }
 
       .profile-card::before {
@@ -360,7 +395,7 @@
         border-radius: 50%;
         top: -16px;
         left: -12px;
-        background: rgba(241, 160, 169, 0.25);
+        background: rgba(231, 121, 102, 0.24);
       }
 
       .profile-image {
@@ -368,7 +403,7 @@
         overflow: hidden;
         border-radius: 22px;
         border: 2px solid var(--ink);
-        background: #d9c9b8;
+        background: #a9c8bd;
       }
 
       .profile-image img {
@@ -383,8 +418,12 @@
         color: var(--ink-soft);
       }
 
+      .about-copy p + p {
+        margin-top: 0.85em;
+      }
+
       .mini-note {
-        background: rgba(255, 255, 255, 0.42);
+        background: rgba(247, 251, 248, 0.78);
         border: 2px solid var(--ink);
         border-radius: 22px;
         padding: 24px 22px;
@@ -413,10 +452,100 @@
         text-transform: uppercase;
       }
 
-      .subjects-grid {
+      .content-carousel {
+        position: relative;
+      }
+
+      .content-swiper {
+        overflow: hidden;
+        margin: -8px -8px -24px;
+        padding: 8px 8px 24px;
+      }
+
+      .content-swiper .swiper-wrapper {
+        align-items: stretch;
+      }
+
+      .content-swiper .swiper-slide {
+        height: auto;
+      }
+
+      .content-swiper.swiper-lock + .carousel-controls {
+        display: none;
+      }
+
+      .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .locations-controls {
+        display: none;
+      }
+
+      .carousel-pagination.swiper-pagination {
+        position: static;
+        display: flex;
+        width: auto;
+        align-items: center;
+        gap: 7px;
+        transform: none;
+      }
+
+      .carousel-pagination .swiper-pagination-bullet {
+        width: 7px;
+        height: 7px;
+        margin: 0;
+        background: var(--plum);
+        opacity: 0.3;
+        transition: width 0.2s ease, opacity 0.2s ease;
+      }
+
+      .carousel-pagination .swiper-pagination-bullet-active {
+        width: 24px;
+        border-radius: 8px;
+        opacity: 1;
+      }
+
+      .carousel-arrows {
+        display: flex;
+        gap: 8px;
+      }
+
+      .carousel-arrow {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid rgba(20, 124, 114, 0.24);
+        border-radius: 50%;
+        background: var(--paper-soft);
+        color: var(--plum-deep);
+        font: inherit;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+      }
+
+      .carousel-arrow:hover:not(:disabled),
+      .carousel-arrow:focus-visible:not(:disabled) {
+        transform: translateY(-2px);
+        background: var(--plum);
+        color: var(--paper-soft);
+      }
+
+      .carousel-arrow:focus-visible {
+        outline: 3px solid var(--blue);
+        outline-offset: 2px;
+      }
+
+      .carousel-arrow:disabled,
+      .carousel-arrow.swiper-button-disabled {
+        opacity: 0.38;
+        cursor: default;
       }
 
       .subject-card {
@@ -424,37 +553,28 @@
         isolation: isolate;
         min-height: 270px;
         overflow: hidden;
-        background: var(--paper-soft);
-        border: 1px solid rgba(69, 57, 93, 0.16);
-        border-radius: 24px;
+        background: linear-gradient(155deg, var(--paper-soft), color-mix(in srgb, var(--subject-color) 10%, var(--paper-soft)));
+        border: 1px solid color-mix(in srgb, var(--subject-color) 40%, var(--line));
+        border-radius: 18px;
         padding: 24px 20px 22px;
-        box-shadow: 0 14px 30px rgba(45, 36, 29, 0.07);
+        box-shadow: 0 14px 30px rgba(24, 59, 55, 0.08);
         transition: transform 0.22s ease, box-shadow 0.22s ease;
       }
 
       .subject-card:hover {
         transform: translateY(-6px) rotate(-0.5deg);
-        box-shadow: 0 20px 36px rgba(45, 36, 29, 0.12);
+        box-shadow: 0 20px 36px rgba(24, 59, 55, 0.14);
       }
 
       .subject-card::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: -42px;
-        right: -32px;
-        width: 126px;
-        height: 126px;
-        border-radius: 50%;
-        background: var(--subject-color);
-        opacity: 0.22;
+        content: none;
       }
 
       .subject-card::after {
         content: "";
         position: absolute;
-        inset: 0 auto 0 0;
-        width: 5px;
+        inset: 0 0 auto;
+        height: 5px;
         background: var(--subject-color);
       }
 
@@ -472,20 +592,21 @@
       }
 
       .subject-icon {
-        width: 54px;
-        height: 54px;
+        width: 48px;
+        height: 48px;
         display: grid;
         place-items: center;
-        border-radius: 18px;
-        background: color-mix(in srgb, var(--subject-color) 42%, white);
-        font-size: 1.75rem;
-        transform: rotate(-5deg);
+        border: 1px solid color-mix(in srgb, var(--subject-color) 52%, var(--paper-soft));
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--subject-color) 24%, var(--paper-soft));
+        color: var(--plum-deep);
+        font-size: 1.12rem;
       }
 
       .subject-label {
         padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(69, 57, 93, 0.06);
+        background: rgba(21, 78, 73, 0.07);
         color: var(--plum);
         font-size: 0.68rem;
         font-weight: 700;
@@ -533,12 +654,11 @@
         .subject-card:hover {
           transform: none;
         }
-      }
 
-      .detail-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 22px;
+        .carousel-pagination .swiper-pagination-bullet,
+        .carousel-arrow {
+          transition: none;
+        }
       }
 
       .locations-heading {
@@ -567,36 +687,27 @@
         min-height: 300px;
         overflow: hidden;
         padding: 28px;
-        border: 1px solid rgba(69, 57, 93, 0.16);
-        border-radius: 26px;
-        background: var(--paper-soft);
-        box-shadow: 0 14px 30px rgba(45, 36, 29, 0.07);
+        border: 1px solid color-mix(in srgb, var(--location-color) 40%, var(--line));
+        border-radius: 18px;
+        background: linear-gradient(155deg, var(--paper-soft), color-mix(in srgb, var(--location-color) 10%, var(--paper-soft)));
+        box-shadow: 0 14px 30px rgba(24, 59, 55, 0.08);
         transition: transform 0.22s ease, box-shadow 0.22s ease;
       }
 
       .location-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 20px 36px rgba(45, 36, 29, 0.12);
+        box-shadow: 0 20px 36px rgba(24, 59, 55, 0.14);
       }
 
       .location-card::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: -54px;
-        right: -42px;
-        width: 170px;
-        height: 170px;
-        border-radius: 50%;
-        background: var(--location-color);
-        opacity: 0.24;
+        content: none;
       }
 
       .location-card::after {
         content: "";
         position: absolute;
-        inset: 0 auto 0 0;
-        width: 5px;
+        inset: 0 0 auto;
+        height: 5px;
         background: var(--location-color);
       }
 
@@ -611,14 +722,15 @@
       }
 
       .location-icon {
-        width: 58px;
-        height: 58px;
+        width: 50px;
+        height: 50px;
         display: grid;
         place-items: center;
-        border-radius: 20px;
-        background: color-mix(in srgb, var(--location-color) 44%, white);
-        font-size: 1.8rem;
-        transform: rotate(-5deg);
+        border: 1px solid color-mix(in srgb, var(--location-color) 52%, var(--paper-soft));
+        border-radius: 14px;
+        background: color-mix(in srgb, var(--location-color) 24%, var(--paper-soft));
+        color: var(--plum-deep);
+        font-size: 1.12rem;
       }
 
       .location-eyebrow {
@@ -651,17 +763,22 @@
       .pill-list li {
         display: inline-flex;
         align-items: center;
+        gap: 8px;
         padding: 9px 14px;
-        border: 1px solid rgba(69, 57, 93, 0.14);
+        border: 1px solid rgba(21, 78, 73, 0.15);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.72);
+        background: rgba(247, 251, 248, 0.8);
         font-weight: 700;
         transition: transform 0.18s ease, background 0.18s ease;
       }
 
       .pill-list li:hover {
         transform: translateY(-2px);
-        background: color-mix(in srgb, var(--location-color, var(--yellow)) 28%, white);
+        background: color-mix(in srgb, var(--location-color, var(--yellow)) 28%, var(--paper-soft));
+      }
+
+      .pill-list i {
+        color: var(--plum);
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -677,8 +794,8 @@
       }
 
       .contact {
-        background: radial-gradient(ellipse at 8% 18%, rgba(241, 160, 169, 0.18), transparent 30%),
-          rgba(239, 226, 209, 0.8);
+        background: radial-gradient(ellipse at 8% 18%, rgba(231, 121, 102, 0.13), transparent 34%),
+          rgba(213, 234, 225, 0.82);
         border-top: 2px solid var(--line);
       }
 
@@ -715,9 +832,9 @@
         gap: 14px;
         margin-top: 28px;
         padding: 16px;
-        border: 1px solid rgba(69, 57, 93, 0.14);
+        border: 1px solid rgba(21, 78, 73, 0.16);
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.58);
+        background: rgba(247, 251, 248, 0.84);
       }
 
       .contact-email-icon {
@@ -727,8 +844,9 @@
         display: grid;
         place-items: center;
         border-radius: 16px;
-        background: rgba(140, 192, 217, 0.3);
-        font-size: 1.4rem;
+        background: rgba(98, 174, 195, 0.3);
+        color: var(--plum-deep);
+        font-size: 1rem;
       }
 
       .contact-email strong,
@@ -750,10 +868,10 @@
       .contact-form {
         gap: 20px;
         padding: clamp(22px, 4vw, 36px);
-        border: 1px solid rgba(69, 57, 93, 0.14);
+        border: 1px solid rgba(21, 78, 73, 0.16);
         border-radius: 28px;
         background: var(--paper-soft);
-        box-shadow: 0 18px 42px rgba(45, 36, 29, 0.1);
+        box-shadow: 0 18px 42px rgba(24, 59, 55, 0.1);
       }
 
       .form-heading {
@@ -761,7 +879,7 @@
         align-items: center;
         gap: 14px;
         padding-bottom: 18px;
-        border-bottom: 1px solid rgba(69, 57, 93, 0.12);
+        border-bottom: 1px solid rgba(21, 78, 73, 0.14);
       }
 
       .form-heading-icon {
@@ -771,8 +889,9 @@
         display: grid;
         place-items: center;
         border-radius: 16px;
-        background: rgba(241, 160, 169, 0.28);
-        font-size: 1.4rem;
+        background: rgba(231, 121, 102, 0.22);
+        color: var(--plum-deep);
+        font-size: 1rem;
       }
 
       .form-heading strong {
@@ -817,8 +936,8 @@
       textarea {
         width: 100%;
         min-width: 0;
-        background: #fff;
-        border: 1px solid rgba(69, 57, 93, 0.22);
+        background: var(--paper-soft);
+        border: 1px solid rgba(21, 78, 73, 0.24);
         border-radius: 14px;
         padding: 13px 14px;
         font: inherit;
@@ -827,7 +946,7 @@
 
       input::placeholder,
       textarea::placeholder {
-        color: #8a7f87;
+        color: #718781;
       }
 
       textarea {
@@ -839,8 +958,135 @@
       select:focus,
       textarea:focus,
       .btn:focus-visible {
-        outline: 3px solid rgba(140, 192, 217, 0.7);
+        outline: 3px solid rgba(98, 174, 195, 0.72);
         outline-offset: 2px;
+      }
+
+      .grade-select {
+        position: relative;
+      }
+
+      .grade-native {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      .grade-trigger {
+        display: flex;
+        width: 100%;
+        min-height: 50px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 13px 14px;
+        border: 1px solid rgba(21, 78, 73, 0.24);
+        border-radius: 14px;
+        background: var(--paper-soft);
+        color: var(--ink);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+      }
+
+      .grade-trigger i {
+        color: var(--plum);
+        transition: transform 0.2s ease;
+      }
+
+      .grade-select.is-open .grade-trigger {
+        border-color: var(--plum);
+        box-shadow: 0 0 0 3px rgba(98, 174, 195, 0.22);
+      }
+
+      .grade-select.is-open .grade-trigger i {
+        transform: rotate(180deg);
+      }
+
+      .grade-trigger:focus-visible {
+        outline: 3px solid rgba(98, 174, 195, 0.72);
+        outline-offset: 2px;
+      }
+
+      .grade-select.is-invalid .grade-trigger {
+        border-color: var(--pink);
+      }
+
+      .grade-options {
+        position: absolute;
+        z-index: 5;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        display: grid;
+        gap: 4px;
+        max-height: 220px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding: 6px;
+        border: 1px solid rgba(20, 124, 114, 0.2);
+        border-radius: 14px;
+        background: var(--paper-soft);
+        box-shadow: 0 16px 34px rgba(24, 59, 55, 0.18);
+      }
+
+      .grade-options[hidden] {
+        display: none;
+      }
+
+      .grade-select.opens-up .grade-options {
+        top: auto;
+        bottom: calc(100% + 8px);
+      }
+
+      .grade-option {
+        width: 100%;
+        padding: 11px 12px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: var(--ink);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: background-color 0.16s ease, color 0.16s ease;
+      }
+
+      .grade-option:hover,
+      .grade-option.is-active,
+      .grade-option[aria-selected="true"] {
+        background: rgba(98, 174, 195, 0.2);
+        color: var(--plum-deep);
+      }
+
+      .grade-option:focus-visible {
+        outline: 2px solid var(--plum);
+        outline-offset: -2px;
+      }
+
+      .grade-error {
+        margin-top: 7px;
+        color: #b84d43;
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .grade-error[hidden] {
+        display: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .grade-trigger,
+        .grade-trigger i,
+        .grade-option {
+          transition: none;
+        }
       }
 
       .submit-btn {
@@ -848,7 +1094,7 @@
         cursor: pointer;
         background: var(--plum);
         border: 2px solid var(--plum);
-        color: #fff;
+        color: var(--paper-soft);
         display: flex;
         justify-content: space-between;
         gap: 18px;
@@ -879,14 +1125,14 @@
 
       .form-msg.ok {
         display: block;
-        background: rgba(156, 199, 154, 0.45);
-        border: 2px solid rgba(45, 36, 29, 0.2);
+        background: rgba(127, 175, 141, 0.22);
+        border: 2px solid rgba(21, 78, 73, 0.2);
       }
 
       .form-msg.err {
         display: block;
-        background: rgba(241, 160, 169, 0.4);
-        border: 2px solid rgba(45, 36, 29, 0.2);
+        background: rgba(231, 121, 102, 0.18);
+        border: 2px solid rgba(21, 78, 73, 0.2);
       }
 
       footer {
@@ -909,7 +1155,7 @@
         border-radius: 999px;
         background: var(--yellow);
         color: var(--plum-deep);
-        box-shadow: 0 8px 22px rgba(45, 36, 29, 0.16);
+        box-shadow: 0 8px 22px rgba(24, 59, 55, 0.16);
         font: inherit;
         font-weight: 700;
         cursor: pointer;
@@ -952,40 +1198,291 @@
         .hero-grid,
         .about-grid,
         .contact-wrap,
-        .detail-grid,
-        .subjects-grid {
+        .detail-grid {
           grid-template-columns: 1fr 1fr;
         }
 
         .hero-grid,
         .about-grid,
-        .contact-wrap,
-        .detail-grid {
+        .contact-wrap {
           grid-template-columns: 1fr;
         }
 
-        .subjects-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
       }
 
       @media (max-width: 560px) {
+        body.menu-open {
+          overflow: hidden;
+        }
+
+        body.menu-open .topbar {
+          z-index: 45;
+          background: transparent;
+        }
+
+        body.menu-open .menu-toggle {
+          visibility: hidden;
+        }
+
+        .topbar {
+          backdrop-filter: none;
+          background: rgba(234, 245, 240, 0.96);
+        }
+
         .topbar-inner {
-          flex-direction: column;
-          align-items: flex-start;
+          position: relative;
+          flex-wrap: wrap;
+          gap: 0 12px;
+          padding: 10px 20px;
         }
 
         .nav {
-          flex-wrap: wrap;
-          gap: 10px 16px;
+          position: fixed;
+          inset: 0 auto 0 0;
+          z-index: 21;
+          display: flex;
+          width: min(340px, 88vw);
+          height: 100vh;
+          height: 100dvh;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          padding: 30px 24px;
+          border-right: 1px solid rgba(232, 182, 76, 0.38);
+          border-radius: 0 24px 24px 0;
+          background: var(--plum-deep);
+          color: var(--paper-soft);
+          box-shadow: 20px 0 60px rgba(11, 48, 44, 0.28);
+          visibility: hidden;
+          pointer-events: none;
+          transform: translateX(-102%);
+          transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0.42s;
+        }
+
+        .topbar-inner.menu-open .nav {
+          visibility: visible;
+          pointer-events: auto;
+          transform: translateX(0);
+          transition-delay: 0s;
+        }
+
+        .drawer-heading {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+          margin-bottom: 44px;
+        }
+
+        .drawer-kicker {
+          display: block;
+          margin-bottom: 10px;
+          color: var(--yellow);
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .drawer-heading h2 {
+          margin: 0;
+          color: var(--paper-soft);
+          font-size: 2rem;
+        }
+
+        .drawer-close {
+          display: inline-flex;
+          width: 44px;
+          height: 44px;
+          flex: 0 0 44px;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid rgba(247, 251, 248, 0.28);
+          border-radius: 50%;
+          background: rgba(247, 251, 248, 0.08);
+          color: var(--paper-soft);
+          font: inherit;
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .drawer-close:hover,
+        .drawer-close:focus-visible {
+          background: rgba(247, 251, 248, 0.16);
+          transform: rotate(90deg);
+        }
+
+        .drawer-close:focus-visible {
+          outline: 2px solid var(--yellow);
+          outline-offset: 3px;
+        }
+
+        .nav-links {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .nav a {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          padding: 15px 8px;
+          border-bottom: 1px solid rgba(247, 251, 248, 0.18);
+          border-radius: 0;
+          color: var(--paper-soft);
+          font-family: "Fraunces", serif;
+          font-size: 1.22rem;
+          transition: color 0.18s ease, padding-left 0.18s ease;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+          padding-left: 14px;
+          color: var(--yellow);
+          outline: 0;
+        }
+
+        .nav-links a i {
+          width: 22px;
+          flex: 0 0 22px;
+          color: var(--pink);
+          font-size: 1rem;
+          text-align: center;
+          transition: color 0.18s ease;
+        }
+
+        .nav a:hover i,
+        .nav a:focus-visible i {
+          color: var(--yellow);
+        }
+
+        .nav a::after {
+          display: none;
+        }
+
+        .menu-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 40;
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          border: 0;
+          background: rgba(15, 48, 44, 0.58);
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+          transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+        }
+
+        body.menu-open .menu-backdrop {
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          transition-delay: 0s;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+          position: relative;
+          width: 52px;
+          height: 48px;
+          margin-left: auto;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid var(--plum-deep);
+          border-radius: 17px 8px 17px 8px;
+          background: var(--plum-deep);
+          color: var(--paper-soft);
+          box-shadow: 0 8px 18px rgba(21, 78, 73, 0.2);
+          cursor: pointer;
+          transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .menu-toggle::after {
+          position: absolute;
+          top: 7px;
+          right: 7px;
+          width: 8px;
+          height: 8px;
+          border: 2px solid var(--plum-deep);
+          border-radius: 50%;
+          background: var(--yellow);
+          content: "";
+        }
+
+        .menu-toggle[aria-expanded="true"] {
+          border-color: var(--plum);
+          background: var(--plum);
+          box-shadow: 0 8px 18px rgba(20, 124, 114, 0.24);
+        }
+
+        .menu-toggle:hover {
+          transform: translateY(-2px);
+          background: var(--plum);
+          box-shadow: 0 12px 22px rgba(20, 124, 114, 0.22);
+        }
+
+        .menu-toggle:active {
+          transform: translateY(0) scale(0.96);
+        }
+
+        .menu-toggle:focus-visible {
+          outline: 3px solid var(--yellow);
+          outline-offset: 2px;
+        }
+
+        .menu-icon {
+          display: flex;
+          width: 22px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+        }
+
+        .menu-icon span {
+          width: 22px;
+          height: 2.5px;
+          border-radius: 2px;
+          background: currentColor;
+          transition: width 0.2s ease, margin-left 0.2s ease, transform 0.24s ease, opacity 0.16s ease;
+        }
+
+        .menu-icon span:nth-child(2) {
+          width: 13px;
+          margin-left: 5px;
+        }
+
+        .menu-icon span:last-child {
+          width: 18px;
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-icon span:first-child {
+          width: 22px;
+          transform: translateY(7.5px) rotate(45deg);
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-icon span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0.2);
+        }
+
+        .menu-toggle[aria-expanded="true"] .menu-icon span:last-child {
+          width: 22px;
+          transform: translateY(-7.5px) rotate(-45deg);
         }
 
         .cta-row {
           flex-direction: column-reverse;
         }
 
-        .subjects-grid {
-          grid-template-columns: 1fr;
+        .locations-controls {
+          display: flex;
         }
 
         .form-fields {
@@ -1002,13 +1499,285 @@
         }
 
         .hero {
-          padding: 42px 0;
-          min-height: calc(100svh - var(--header-height, 112px));
+          min-height: calc(100vh - var(--header-height, 64px) + 16px);
+          min-height: calc(100dvh - var(--header-height, 64px) + 16px);
+          padding: 34px 0 42px;
+        }
+
+        .about-grid {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-areas:
+            "heading"
+            "lead"
+            "visual"
+            "detail";
+          row-gap: 12px;
+          align-items: start;
+        }
+
+        .about-copy-block,
+        .about-copy {
+          display: contents;
+        }
+
+        .about-grid .section-heading {
+          grid-area: heading;
+          margin-bottom: 0;
+        }
+
+        .about-copy .about-lead {
+          grid-area: lead;
+          align-self: center;
+        }
+
+        .about-copy .about-detail {
+          grid-area: detail;
+          margin-top: 0;
+        }
+
+        .about-copy {
+          font-size: 0.96rem;
+          line-height: 1.5;
+        }
+
+        .about-visual {
+          grid-area: visual;
+          align-self: start;
+          justify-self: center;
+          width: min(100%, 340px);
+          margin: 0;
+          padding: 10px;
+          border: 1px solid rgba(20, 124, 114, 0.16);
+          border-radius: 22px;
+          background: rgba(98, 174, 195, 0.2);
+          box-shadow: 0 18px 36px rgba(24, 59, 55, 0.12);
+        }
+
+        .profile-card {
+          width: 100%;
+          padding: 0;
+          border: 0;
+          border-radius: 16px;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .profile-card::before {
+          display: none;
+        }
+
+        .profile-image {
+          height: auto;
+          aspect-ratio: 1.1;
+          border-radius: 16px;
+        }
+
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr);
+          grid-template-areas:
+            "eyebrow"
+            "title"
+            "visual"
+            "description";
+          column-gap: 0;
+          row-gap: 12px;
+          align-items: start;
+        }
+
+        .hero-copy {
+          display: contents;
+        }
+
+        .hero-copy > * {
+          animation: hero-rise 0.58s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .hero-copy .eyebrow {
+          grid-area: eyebrow;
+          text-align: left;
+          animation-delay: 0.02s;
+        }
+
+        .hero-copy h1 {
+          grid-area: title;
+          max-width: none;
+          margin: 0;
+          font-size: 2.7rem;
+          line-height: 1.02;
+          text-align: left;
+          animation-delay: 0.08s;
+        }
+
+        .hero-copy p {
+          grid-area: description;
+          max-width: none;
+          margin: 0;
+          font-size: 0.96rem;
+          line-height: 1.48;
+          text-align: left;
+          animation-delay: 0.14s;
+        }
+
+        .eyebrow {
+          justify-content: flex-start;
+          gap: 9px;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: var(--plum);
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          margin-bottom: 14px;
+        }
+
+        .hero .eyebrow {
+          justify-self: start;
+          padding: 0;
+          border: 0;
+          border-radius: 0;
+          background: transparent;
+          color: var(--yellow);
+        }
+
+        .eyebrow::before {
+          width: 8px;
+          height: 8px;
+          flex: 0 0 8px;
+          border-radius: 50%;
+          background: var(--pink);
+          content: "";
+        }
+
+        .hero h1 {
+          max-width: none;
+        }
+
+        .hero p {
+          max-width: none;
+        }
+
+        .hero .cta-row {
+          display: none;
+        }
+
+        .hero-visual {
+          grid-area: visual;
+          align-self: start;
+          width: min(100%, 248px);
+          justify-self: center;
+          margin: 0;
+          padding: 10px;
+          border: 1px solid rgba(20, 124, 114, 0.16);
+          border-radius: 24px;
+          background: rgba(98, 174, 195, 0.2);
+          box-shadow: 0 18px 36px rgba(24, 59, 55, 0.12);
+          animation: hero-rise 0.68s 0.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+
+        .photo-card {
+          width: 100%;
+          padding: 0;
+          border: 0;
+          border-radius: 16px;
+          background: transparent;
+          box-shadow: none;
+          transform: none;
+        }
+
+        .photo-card::before,
+        .photo-card::after {
+          display: none;
+        }
+
+        .hero-image {
+          aspect-ratio: 0.75;
+          border: 2px solid var(--ink);
+          border-radius: 16px;
+        }
+
+        .hero-image img {
+          object-position: center 55%;
+        }
+
+        .sticker {
+          font-size: 0.88rem;
+          padding: 7px 14px;
+        }
+
+        .sticker.one {
+          top: 10px;
+          right: 10px;
+        }
+
+        .sticker.two {
+          bottom: 10px;
+          left: 10px;
+        }
+
+        @media (max-width: 360px) {
+          .hero-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+
+          .about-grid {
+            grid-template-columns: minmax(0, 1fr);
+          }
+
+          .about-copy {
+            font-size: 0.9rem;
+          }
+
+          .about-copy .about-detail {
+            font-size: 0.9rem;
+          }
+
+          .about-visual {
+            padding: 6px;
+          }
+
+          .hero-copy h1 {
+            font-size: 2.1rem;
+          }
+
+          .hero-visual {
+            padding: 6px;
+          }
+
+          .sticker {
+            display: none;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .nav,
+          .nav a,
+          .menu-toggle,
+          .menu-icon span,
+          .drawer-close,
+          .menu-backdrop,
+          .hero-copy > *,
+          .hero-visual {
+            transition: none;
+            animation: none;
+          }
         }
 
         .section {
           min-height: calc(100svh - var(--header-height, 112px));
           padding: 44px 0;
+        }
+      }
+
+      @keyframes hero-rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
@@ -1023,23 +1792,49 @@
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">Νικόλ Φραδελάκη</div>
-        <nav class="nav" aria-label="Κύρια πλοήγηση">
-          <a href="#about">Λίγα λόγια</a>
-          <a href="#subjects">Μαθήματα</a>
-          <a href="#locations">Πού</a>
-          <a href="#contact">Επικοινωνία</a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-label="Άνοιγμα μενού"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span class="menu-icon" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+        <nav class="nav" id="primary-navigation" aria-label="Κύρια πλοήγηση">
+          <div class="drawer-heading">
+            <div>
+              <span class="drawer-kicker">Νικόλ Φραδελάκη</span>
+              <h2>Πλοήγηση</h2>
+            </div>
+            <button class="drawer-close" type="button" aria-label="Κλείσιμο μενού">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="nav-links">
+            <a href="#about"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i><span>Λίγα λόγια</span></a>
+            <a href="#subjects"><i class="fa-solid fa-book-open" aria-hidden="true"></i><span>Μαθήματα</span></a>
+            <a href="#locations"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Πού</span></a>
+            <a href="#contact"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span>Επικοινωνία</span></a>
+          </div>
         </nav>
       </div>
     </header>
 
+    <button class="menu-backdrop" type="button" aria-label="Κλείσιμο μενού" tabindex="-1"></button>
+
     <main>
       <section class="hero">
         <div class="wrap hero-grid">
-          <div>
+          <div class="hero-copy">
             <div class="eyebrow">Ιδιαίτερα μαθήματα φιλολογικών</div>
-            <h1>Μαθητική <span class="accent">αγάπη</span> για κάθε παιδί</h1>
+            <h1>Μαθητική αγάπη για κάθε παιδί</h1>
             <p>
-              Πτυχιούχος Φιλολογίας, με υπομονή, ξεκάθαρη μέθοδο και προσαρμοσμένο
+              Τελοιόφοιτη Παιδαγωγικού τμήματος Δευτεροβάθμιας Εκπαίδευσης, με υπομονή, ξεκάθαρη μέθοδο και προσαρμοσμένο
               πρόγραμμα για Δημοτικό, Γυμνάσιο και Α' Λυκείου — online ή στο σπίτι σου.
             </p>
             <div class="cta-row">
@@ -1065,15 +1860,17 @@
 
       <section class="section about" id="about">
         <div class="wrap about-grid">
-          <div>
+          <div class="about-copy-block">
             <div class="section-heading">
               <h2>Λίγα λόγια</h2>
             </div>
             <div class="about-copy">
-              <p>
-                Προσφέρω ιδιαίτερα μαθήματα φιλολογικών με έμφαση στην κατανόηση, όχι
-                απλώς στην αποστήθιση. Κάθε παιδί έχει διαφορετικό ρυθμό και διαφορετικές
-                ανάγκες, γι' αυτό προσαρμόζω το πρόγραμμα με προσοχή, υπομονή και θετική
+              <p class="about-lead">
+                Τελοιόφοιτη Παιδαγωγικού τμήματος Δευτεροβάθμιας Εκπαίδευσης, με υπομονή, ξεκάθαρη μέθοδο και προσαρμοσμένο
+                πρόγραμμα για Δημοτικό, Γυμνάσιο και Α' Λυκείου — online ή στο σπίτι σου.
+              </p>
+              <p class="about-detail">
+                Γι' αυτό προσαρμόζω το πρόγραμμα με προσοχή, υπομονή και θετική
                 ενθάρρυνση — είτε για ενίσχυση, είτε για καλύτερη προετοιμασία σε διαγωνίσματα.
               </p>
             </div>
@@ -1097,42 +1894,58 @@
             <p>Σταθερή υποστήριξη και μικρά βήματα προόδου, προσαρμοσμένα στην ηλικία και τις ανάγκες κάθε παιδιού.</p>
           </div>
 
-          <div class="subjects-grid">
-            <article class="subject-card">
+          <div class="subjects-carousel content-carousel">
+            <div class="subjects-swiper content-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Μαθήματα φιλολογικών">
+              <div class="swiper-wrapper">
+            <article class="subject-card swiper-slide">
               <div class="subject-card-top">
-                <span class="subject-icon" aria-hidden="true">📚</span>
+                <span class="subject-icon" aria-hidden="true"><i class="fa-solid fa-book-open"></i></span>
                 <span class="subject-label">01 · Βάσεις</span>
               </div>
               <h3>Δημοτικό</h3>
               <p>Γλώσσα, κατανόηση κειμένου και ενίσχυση με δημιουργικό, παιδαγωγικό τρόπο.</p>
             </article>
 
-            <article class="subject-card">
+            <article class="subject-card swiper-slide">
               <div class="subject-card-top">
-                <span class="subject-icon" aria-hidden="true">🏛️</span>
+                <span class="subject-icon" aria-hidden="true"><i class="fa-solid fa-landmark"></i></span>
                 <span class="subject-label">02 · Εμβάθυνση</span>
               </div>
               <h3>Γυμνάσιο</h3>
               <p>Αρχαία, Νεοελληνική Γλώσσα &amp; Λογοτεχνία, Ιστορία και οργανωμένη επανάληψη.</p>
             </article>
 
-            <article class="subject-card">
+            <article class="subject-card swiper-slide">
               <div class="subject-card-top">
-                <span class="subject-icon" aria-hidden="true">✍️</span>
+                <span class="subject-icon" aria-hidden="true"><i class="fa-solid fa-pen-nib"></i></span>
                 <span class="subject-label">03 · Λύκειο</span>
               </div>
               <h3>Α' Λυκείου</h3>
               <p>Φιλολογικά μαθήματα, διαγωνίσματα, συντακτικό και λογοτεχνική ανάλυση.</p>
             </article>
 
-            <article class="subject-card">
+            <article class="subject-card swiper-slide">
               <div class="subject-card-top">
-                <span class="subject-icon" aria-hidden="true">🌱</span>
+                <span class="subject-icon" aria-hidden="true"><i class="fa-solid fa-seedling"></i></span>
                 <span class="subject-label">04 · Ευέλικτα</span>
               </div>
               <h3>Ευέλικτο πρόγραμμα</h3>
               <p>Ραντεβού με βάση το δικό σου πρόγραμμα και το επίπεδο του παιδιού.</p>
             </article>
+              </div>
+            </div>
+
+            <div class="subjects-controls carousel-controls">
+              <div class="subjects-pagination carousel-pagination swiper-pagination" aria-label="Επιλογή μαθήματος"></div>
+              <div class="subjects-arrows carousel-arrows">
+                <button class="subjects-arrow carousel-arrow subjects-prev carousel-prev" type="button" aria-label="Προηγούμενο μάθημα">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button class="subjects-arrow carousel-arrow subjects-next carousel-next" type="button" aria-label="Επόμενο μάθημα">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1145,23 +1958,25 @@
             <p>Διαλέγουμε τον τρόπο που ταιριάζει καλύτερα στο παιδί και στο καθημερινό σας πρόγραμμα.</p>
           </div>
 
-          <div class="detail-grid">
-            <article class="location-card">
+          <div class="locations-carousel content-carousel">
+            <div class="locations-swiper content-swiper swiper" role="region" aria-roledescription="carousel" aria-label="Τρόποι και περιοχές μαθημάτων">
+              <div class="swiper-wrapper">
+            <article class="location-card swiper-slide">
               <div class="location-card-top">
-                <span class="location-icon" aria-hidden="true">🏡</span>
+                <span class="location-icon" aria-hidden="true"><i class="fa-solid fa-house"></i></span>
                 <span class="location-eyebrow">Διαλέγεις εσύ</span>
               </div>
               <h3>Πού &amp; πώς</h3>
               <p>Μαθήματα με άνεση, στον χώρο σας ή από όπου κι αν βρίσκεστε.</p>
               <ul class="pill-list">
-                <li>🏠 Στο σπίτι σου</li>
-                <li>💻 Online</li>
+                <li><i class="fa-solid fa-house" aria-hidden="true"></i><span>Στο σπίτι σου</span></li>
+                <li><i class="fa-solid fa-laptop" aria-hidden="true"></i><span>Online</span></li>
               </ul>
             </article>
 
-            <article class="location-card">
+            <article class="location-card swiper-slide">
               <div class="location-card-top">
-                <span class="location-icon" aria-hidden="true">📍</span>
+                <span class="location-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
                 <span class="location-eyebrow">Κοντά στη γειτονιά σου</span>
               </div>
               <h3>Περιοχές</h3>
@@ -1174,6 +1989,20 @@
                 <li>Μπλε γραμμή</li>
               </ul>
             </article>
+              </div>
+            </div>
+
+            <div class="locations-controls carousel-controls">
+              <div class="locations-pagination carousel-pagination swiper-pagination" aria-label="Επιλογή τρόπου μαθήματος"></div>
+              <div class="carousel-arrows">
+                <button class="locations-prev carousel-arrow carousel-prev" type="button" aria-label="Προηγούμενος τρόπος μαθήματος">
+                  <span aria-hidden="true">←</span>
+                </button>
+                <button class="locations-next carousel-arrow carousel-next" type="button" aria-label="Επόμενος τρόπος μαθήματος">
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1190,10 +2019,10 @@
               Το πρόγραμμα και η τιμή προσαρμόζονται στις ανάγκες του παιδιού.
             </p>
             <div class="contact-email">
-              <span class="contact-email-icon" aria-hidden="true">📞</span>
+              <span class="contact-email-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
               <div>
                 <strong>Προτιμάς να με καλέσεις;</strong>
-                <a href="tel:+306983704012">698 370 4012</a>
+                <a href="tel:+306947312354">694 731 2354</a>
               </div>
             </div>
           </div>
@@ -1201,11 +2030,11 @@
           <form
             id="contactForm"
             class="contact-form"
-            action="https://formspree.io/f/mqabnagv"
+            action="https://formspree.io/f/mwlpgjea"
             method="POST"
           >
             <div class="form-heading">
-              <span class="form-heading-icon" aria-hidden="true">💌</span>
+              <span class="form-heading-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span>
               <div>
                 <strong>Στείλε μου μήνυμα</strong>
                 <p>Θα σου απαντήσω το συντομότερο.</p>
@@ -1226,13 +2055,37 @@
               </div>
 
               <div class="field field-wide">
-                <label for="grade">Τάξη μαθητή</label>
-                <select id="grade" name="grade" required>
-                  <option value="" selected disabled>Επίλεξε τάξη</option>
-                  <option>Δημοτικό</option>
-                  <option>Γυμνάσιο</option>
-                  <option>Α' Λυκείου</option>
-                </select>
+                <label id="gradeLabel" for="gradePicker">Τάξη μαθητή</label>
+                <div class="grade-select" id="gradeSelectControl">
+                  <select class="grade-native" id="grade" name="grade" required aria-hidden="true" tabindex="-1">
+                    <option value="" selected disabled>Επίλεξε τάξη</option>
+                    <option>Δημοτικό</option>
+                    <option>Γυμνάσιο</option>
+                    <option>Α' Λυκείου</option>
+                  </select>
+                  <button
+                    class="grade-trigger"
+                    id="gradePicker"
+                    type="button"
+                    role="combobox"
+                    aria-labelledby="gradeLabel gradeValue"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="gradeOptions"
+                    aria-required="true"
+                    aria-describedby="gradeError"
+                    aria-invalid="false"
+                  >
+                    <span id="gradeValue">Επίλεξε τάξη</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="grade-options" id="gradeOptions" role="listbox" aria-labelledby="gradeLabel" hidden>
+                    <div class="grade-option" id="gradeOptionPrimary" role="option" data-value="Δημοτικό" aria-selected="false">Δημοτικό</div>
+                    <div class="grade-option" id="gradeOptionGymnasium" role="option" data-value="Γυμνάσιο" aria-selected="false">Γυμνάσιο</div>
+                    <div class="grade-option" id="gradeOptionLyceum" role="option" data-value="Α' Λυκείου" aria-selected="false">Α' Λυκείου</div>
+                  </div>
+                  <p class="grade-error" id="gradeError" role="alert" hidden>Επίλεξε την τάξη του μαθητή.</p>
+                </div>
               </div>
 
               <div class="field field-wide">
@@ -1258,7 +2111,62 @@
       <span>Πάνω</span>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+      const initializeContentCarousel = (swiperElement, breakpoints) => {
+        if (!swiperElement || typeof Swiper !== "function") return;
+
+        const controls = swiperElement.parentElement.querySelector(".carousel-controls");
+        if (!controls) return;
+
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        new Swiper(swiperElement, {
+          slidesPerView: 1.08,
+          slidesPerGroup: 1,
+          spaceBetween: 14,
+          speed: reducedMotion ? 0 : 450,
+          grabCursor: true,
+          rewind: true,
+          watchOverflow: true,
+          keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+          },
+          navigation: {
+            nextEl: controls.querySelector(".carousel-next"),
+            prevEl: controls.querySelector(".carousel-prev"),
+          },
+          pagination: {
+            el: controls.querySelector(".carousel-pagination"),
+            clickable: true,
+            bulletElement: "button",
+          },
+          a11y: {
+            prevSlideMessage: "Προηγούμενο μάθημα",
+            nextSlideMessage: "Επόμενο μάθημα",
+            paginationBulletMessage: "Μετάβαση στο μάθημα {{index}}",
+          },
+          breakpoints,
+        });
+      };
+
+      initializeContentCarousel(document.querySelector(".subjects-swiper"), {
+        560: {
+          slidesPerView: 2.05,
+          spaceBetween: 16,
+        },
+        900: {
+          slidesPerView: 3,
+          spaceBetween: 18,
+        },
+      });
+      initializeContentCarousel(document.querySelector(".locations-swiper"), {
+        560: {
+          slidesPerView: 2,
+          spaceBetween: 18,
+        },
+      });
+
       const topbar = document.querySelector(".topbar");
       const updateHeaderHeight = () => {
         document.documentElement.style.setProperty("--header-height", `${topbar.offsetHeight}px`);
@@ -1266,6 +2174,36 @@
 
       updateHeaderHeight();
       new ResizeObserver(updateHeaderHeight).observe(topbar);
+
+      const topbarInner = document.querySelector(".topbar-inner");
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navigation = document.getElementById("primary-navigation");
+      const menuBackdrop = document.querySelector(".menu-backdrop");
+      const drawerClose = document.querySelector(".drawer-close");
+      const setMenuOpen = (isOpen) => {
+        const wasOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        topbarInner.classList.toggle("menu-open", isOpen);
+        document.body.classList.toggle("menu-open", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Κλείσιμο μενού" : "Άνοιγμα μενού");
+        if (isOpen) {
+          navigation.querySelector("a").focus({ preventScroll: true });
+        } else if (wasOpen) {
+          menuToggle.focus({ preventScroll: true });
+        }
+      };
+
+      menuToggle.addEventListener("click", () => {
+        setMenuOpen(menuToggle.getAttribute("aria-expanded") !== "true");
+      });
+      navigation.addEventListener("click", (event) => {
+        if (event.target.closest("a")) setMenuOpen(false);
+      });
+      menuBackdrop.addEventListener("click", () => setMenuOpen(false));
+      drawerClose.addEventListener("click", () => setMenuOpen(false));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenuOpen(false);
+      });
 
       const backToTop = document.getElementById("backToTop");
       const updateBackToTopVisibility = () => {
@@ -1286,6 +2224,112 @@
       const btn = form.querySelector(".submit-btn");
       const btnLabel = btn.querySelector("span:first-child");
       const FORMSPREE_ENDPOINT = form.action;
+      const gradeSelect = form.querySelector("#grade");
+      const gradePicker = form.querySelector("#gradePicker");
+      const gradePickerContainer = form.querySelector("#gradeSelectControl");
+      const gradeOptionsList = form.querySelector("#gradeOptions");
+      const gradeValue = form.querySelector("#gradeValue");
+      const gradeError = form.querySelector("#gradeError");
+      const gradeOptions = Array.from(gradeOptionsList.querySelectorAll("[role='option']"));
+      let activeGradeIndex = 0;
+
+      const syncGradePicker = () => {
+        const selectedOption = gradeOptions.find((option) => option.dataset.value === gradeSelect.value);
+        gradeValue.textContent = selectedOption?.textContent.trim() || gradeSelect.options[0].textContent.trim();
+        gradeOptions.forEach((option) => {
+          option.setAttribute("aria-selected", String(option === selectedOption));
+        });
+      };
+
+      const setActiveGradeOption = (index) => {
+        activeGradeIndex = (index + gradeOptions.length) % gradeOptions.length;
+        gradeOptions.forEach((option, optionIndex) => {
+          option.classList.toggle("is-active", optionIndex === activeGradeIndex);
+        });
+        gradePicker.setAttribute("aria-activedescendant", gradeOptions[activeGradeIndex].id);
+      };
+
+      const setGradePickerOpen = (isOpen) => {
+        gradePickerContainer.classList.toggle("is-open", isOpen);
+        gradeOptionsList.hidden = !isOpen;
+        gradePicker.setAttribute("aria-expanded", String(isOpen));
+        if (isOpen) {
+          const triggerRect = gradePicker.getBoundingClientRect();
+          const menuHeight = Math.min(gradeOptionsList.scrollHeight, 220);
+          const roomBelow = window.innerHeight - triggerRect.bottom;
+          gradePickerContainer.classList.toggle("opens-up", roomBelow < menuHeight + 8 && triggerRect.top > menuHeight + 8);
+          const selectedIndex = gradeOptions.findIndex((option) => option.dataset.value === gradeSelect.value);
+          setActiveGradeOption(selectedIndex >= 0 ? selectedIndex : 0);
+        } else {
+          gradePickerContainer.classList.remove("opens-up");
+          gradePicker.removeAttribute("aria-activedescendant");
+          gradeOptions.forEach((option) => option.classList.remove("is-active"));
+        }
+      };
+
+      const chooseGrade = (option) => {
+        gradeSelect.value = option.dataset.value;
+        syncGradePicker();
+        gradePickerContainer.classList.remove("is-invalid");
+        gradePicker.setAttribute("aria-invalid", "false");
+        gradeError.hidden = true;
+        setGradePickerOpen(false);
+        gradePicker.focus({ preventScroll: true });
+      };
+
+      gradePicker.addEventListener("click", () => {
+        setGradePickerOpen(gradePicker.getAttribute("aria-expanded") !== "true");
+      });
+      gradePicker.addEventListener("keydown", (event) => {
+        const isOpen = gradePicker.getAttribute("aria-expanded") === "true";
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          if (!isOpen) {
+            setGradePickerOpen(true);
+            if (event.key === "ArrowUp") setActiveGradeOption(gradeOptions.length - 1);
+          } else {
+            setActiveGradeOption(activeGradeIndex + (event.key === "ArrowDown" ? 1 : -1));
+          }
+        } else if (event.key === "Home" || event.key === "End") {
+          event.preventDefault();
+          setGradePickerOpen(true);
+          setActiveGradeOption(event.key === "Home" ? 0 : gradeOptions.length - 1);
+        } else if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          if (isOpen) chooseGrade(gradeOptions[activeGradeIndex]);
+          else setGradePickerOpen(true);
+        } else if (event.key === "Escape" && isOpen) {
+          event.preventDefault();
+          setGradePickerOpen(false);
+        }
+      });
+      gradeOptionsList.addEventListener("click", (event) => {
+        const option = event.target.closest("[role='option']");
+        if (option) chooseGrade(option);
+      });
+      document.addEventListener("click", (event) => {
+        if (!gradePickerContainer.contains(event.target)) setGradePickerOpen(false);
+      });
+      form.addEventListener("invalid", (event) => {
+        if (event.target !== gradeSelect) return;
+        event.preventDefault();
+        gradePickerContainer.classList.add("is-invalid");
+        gradePicker.setAttribute("aria-invalid", "true");
+        gradeError.hidden = false;
+        setGradePickerOpen(true);
+        gradePicker.focus({ preventScroll: true });
+      }, true);
+      gradeSelect.addEventListener("change", syncGradePicker);
+      form.addEventListener("reset", () => {
+        requestAnimationFrame(() => {
+          gradePickerContainer.classList.remove("is-invalid");
+          gradePicker.setAttribute("aria-invalid", "false");
+          gradeError.hidden = true;
+          setGradePickerOpen(false);
+          syncGradePicker();
+        });
+      });
+      syncGradePicker();
 
       form.addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -1313,7 +2357,7 @@
           msg.className = "form-msg ok";
           form.reset();
         } catch (err) {
-          msg.textContent = "Δεν ήταν δυνατή η αποστολή. Δοκίμασε ξανά ή κάλεσε στο 698 370 4012.";
+          msg.textContent = "Δεν ήταν δυνατή η αποστολή. Δοκίμασε ξανά ή κάλεσε στο 694 731 2354.";
           msg.className = "form-msg err";
         } finally {
           btn.disabled = false;
